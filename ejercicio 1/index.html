@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.js" integrity="sha256-r1+cTccsZWuMsEacDDz3zmLoa4bJcLUlZk+W21C0Eoo="
+        crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+    <script src="js/parentController.js"></script>
+    <script src="js/childController.js"></script>
+</head>
+
+<body>
+    <div ng-controller="parentController as parent" style="background-color: LightBlue; text-align: center;">
+        <h2>{{parent.user.name}} {{parent.user.lastName}} {{child.user.lastName}} </h2>
+        <img ng-src="{{parent.user.img}}" style="width:304px;height:228px;">
+        <div ng-controller="childController as child" style="background-color: teal;">
+            <h2>{{child.user.name}} {{child.user.lastName}} {{parent.user.lastName}} </h2>
+            <img ng-src="{{child.user.img}}" style="width:221px;height:325px;">
+        </div>
+    </div>
+</body>
+
+</html>
