@@ -11,15 +11,26 @@
     <script src="js/app.js"></script>
     <script src="js/moviesController.js"></script>
     <style>
-        .old {background: red;} /* 1995 < */
-        .modern {background: blue;} /* 1995 to 2000*/
-        .new {background: green;} /* 2000 > */
+        .old {
+            background: red;
+        }
+        /* 1995 < */
+
+        .modern {
+            background: blue;
+        }
+        /* 1995 to 2000*/
+
+        .new {
+            background: green;
+        }
+        /* 2000 > */
     </style>
 </head>
 
 <body>
     <div ng-controller="moviesController as vm">
-        <div class="likes">
+        <div class="likes" ng-show="vm.showLikes">
             <p>Todd's like list</p>
             <ul>
                 <li ng-repeat="like in vm.likesList">
@@ -28,11 +39,21 @@
                 </li>
             </ul>
         </div>
+
+        <form ng-submit="vm.addMovie();" style="border:solid; background-color: lightgray; ">
+            <p>Add a movie</p>
+            <input type="text" placeholder="Title" ng-model="vm.newTitle" ng-focus="vm.onFocus();" ng-blur="vm.onBlur();" ng-change="vm.onChange();">
+            <input type="text" placeholder="Release year" ng-model="vm.newRelease">
+            <button type="submit">Add new movie</button>
+        </form>
+        <a href=""ng-click="field = 'year'">Year</a>
+        <a href=""ng-click="field = 'title'">Title</a>
+        <input type="text" placeholder="Search by year" ng-model="search">
         <ul>
             <!--<li ng-class="{ old: movie.year < 1995, modern: movie.year > 1995 && movie.year <= 2000, new: movie.year > 2000  }" ng-repeat="movie in vm.favorites">-->
-            <li ng-repeat="movie in vm.favorites">
+            <li ng-repeat="movie in vm.favorites | orderBy: field | filter: {year : search }">
                 <img ng-src="https://images-na.ssl-images-amazon.com/images/M/{{movie.img}}" alt="{{movie.title}}" style="height: 10%; width: 10%">
-                <a ng-href="http://imdb.com/title/{{movie.imdb}}" target="_blank" >{{movie.title}} ({{$index}})</a>
+                <a ng-href="http://imdb.com/title/{{movie.imdb}}" target="_blank">{{movie.title}} ({{$index}})</a>
                 <p>Released in: {{movie.year}}</p>
                 <p ng-show="movie.popular">This movie is popular</p>
                 <p ng-hide="movie.year < 2000">This movie is quite new!</p>
@@ -51,7 +72,7 @@
                         Movie has no category
                     </div>
                 </div>
-                <a href="" ng-click="vm.addToLikes(movie);" >Like this movie</a>
+                <a href="" ng-click="vm.addToLikes(movie);" ng-show="vm.showLikes">Like this movie</a>
             </li>
         </ul>
     </div>
