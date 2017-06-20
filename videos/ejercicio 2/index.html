@@ -14,18 +14,12 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div ng-controller="heroesController as vm">
-        <!--<div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary active"><input type="radio" id="option1" name="showList" ng-change="vm.radioChange(true)"  ng-model="vm.showFullList" ng-value="true" autocomplete="off" /> Show full list </label>
-            <label class="btn btn-primary"><input type="radio" id="option2" name="showList" ng-change="vm.radioChange(false)" ng-model="vm.showFullList" autocomplete="off"  ng-value="false" /> Search by amount of money </label>
-        </div>-->
         <div class="btn-group" data-toggle="buttons">
             <label>
                 <input type="radio" name="a1" ng-model="vm.showFullList" ng-value="true">
@@ -38,7 +32,7 @@
         <button ng-click="search = ''" class="btn btn-default">Reset</button>
         <div class="panel panel-default" ng-hide="vm.showFullList">
             <div class="panel-body col-md-2">
-                <input type="number" class="form-control" placeholder="Enter amount" ng-model="search" >
+                <input type="number" class="form-control" placeholder="Enter amount" ng-model="search">
                 <p>Currently filtering by: {{search | currency}}</p>
             </div>
         </div>
@@ -46,14 +40,14 @@
         <div class="row">
             <div class="col-md-2"></div>
             <ul class="col-md-2">
-                <li ng-repeat="hero in vm.heroes | orderBy: bounty | filter : {bounty : search}">
+                <li ng-repeat="hero in vm.heroes | orderBy: 'bounty' | filter : {bounty : search}">
                     <a href="" ng-click="vm.increaseCounter(hero.name)">Name: {{hero.name}}</a>
                     <p>Real name: {{hero.realName}}</p>
                     <p>Bounty: {{hero.bounty | currency}}</p>
                 </li>
             </ul>
             <ul class="col-md-2">
-                <li ng-repeat="hero in vm.heroes | orderBy: bounty | filter : {bounty : search}">
+                <li ng-repeat="hero in vm.heroes | orderBy: 'counter' | filter : {bounty : search}">
                     <p>Name: {{hero.name | uppercase}}</p>
                     <p>Counter: {{hero.counter}}</p>
                 </li>
