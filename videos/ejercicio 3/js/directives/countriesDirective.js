@@ -9,10 +9,6 @@
 
         return {
             scope: {},
-            /*bindToController: {
-                count: '=',
-                title: '@name'
-            },*/
             restrict: 'E',
             template: `<div class="countries">
             <button class="btn btn-primary" ng-click="countries.getData();">Get countries</button>

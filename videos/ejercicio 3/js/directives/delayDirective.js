@@ -9,10 +9,6 @@
 
         return {
             scope: {},
-            /*bindToController: {
-                count: '=',
-                title: '@name'
-            },*/
             restrict: 'E',
             template: `<div class="delay">
             <button class="btn btn-primary" ng-click="delay.getData();">Get Delay</button>
