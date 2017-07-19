@@ -5,8 +5,6 @@
         .module('app')
         .controller('orderFormController', orderFormController);
 
-
-    // toda la logica reside en el controlador, se deben usar servicios y factorias
     function orderFormController() {
         var vm = this;
 
@@ -24,6 +22,7 @@
         }];
 
         vm.onSubmit = function () {
+            // ejecuta la funcion indicada en la directiva, en este caso, del orderController
             vm.submit();
         }
     };

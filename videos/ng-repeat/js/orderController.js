@@ -23,7 +23,7 @@
         };
 
         vm.submitOrder = function () {
-            
+            console.log('submitOrder from orderController ', vm.customerOrder);
         };
     };
 })();
