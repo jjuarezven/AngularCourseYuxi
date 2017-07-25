@@ -5,16 +5,16 @@
         .module('app')
         .controller('countriesController', countriesController);
 
-    function countriesController(countriesService) {
+    function countriesController(isoService) {
         var vm = this;
         
         vm.countriesList = [];
-        vm.getData = function () {
-            countriesService
+        /*vm.getData = function () {
+            isoService
                 .getData()
                 .then(function (response) {
                     vm.countriesList = response;
                 })
-        }
+        }*/
     };
 })();
